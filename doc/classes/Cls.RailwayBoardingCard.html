@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Cls.html">\Cls</a></li>
+                                                        <li><a href="../namespaces/Test.html">\Test</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">64</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1109744480"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1109744480" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1027740848"></a>
+                                <a href="../namespaces/Cls.html" style="margin-left: 30px; padding-left: 0">Cls</a>
+            </div>
+            <div id="namespace-1027740848" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/Cls.tripInterface.html">tripInterface</a></li>
+                                                                                                    <li class="class"><a href="../classes/Cls.AirwaysBoardingCard.html">AirwaysBoardingCard</a></li>
+                                                    <li class="class"><a href="../classes/Cls.BusBoardingCard.html">BusBoardingCard</a></li>
+                                                    <li class="class"><a href="../classes/Cls.CardSort.html">CardSort</a></li>
+                                                    <li class="class"><a href="../classes/Cls.RailwayBoardingCard.html">RailwayBoardingCard</a></li>
+                                                    <li class="class"><a href="../classes/Cls.tripAbstract.html">tripAbstract</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-850631843"></a>
+                                <a href="../namespaces/Test.html" style="margin-left: 30px; padding-left: 0">Test</a>
+            </div>
+            <div id="namespace-850631843" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Test.AbstractBoardingCardTest.html">AbstractBoardingCardTest</a></li>
+                                                    <li class="class"><a href="../classes/Test.AirwaysBoardingCardTest.html">AirwaysBoardingCardTest</a></li>
+                                                    <li class="class"><a href="../classes/Test.BusBoardingCardTest.html">BusBoardingCardTest</a></li>
+                                                    <li class="class"><a href="../classes/Test.CardSortTest.html">CardSortTest</a></li>
+                                                    <li class="class"><a href="../classes/Test.RailwayBoardingCardTest.html">RailwayBoardingCardTest</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Cls.html">\Cls</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Cls</small>RailwayBoardingCard</h1>
+                    <p><em>tripAbstract extends the tripInterface so as to define few methods to be be used in the child classes</em></p>
+                    <p>Class tripAbstract</p>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Cls.tripAbstract.html#method_getArrivalLocationCity" class="">getArrivalLocationCity()</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#method_getDepartureLocationCity" class="">getDepartureLocationCity()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_getCardDetails" class="">getCardDetails()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_getShortCardDetails" class="">getShortCardDetails()</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#method_setArrivalLocation" class="">setArrivalLocation()</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#method_getSelLanguage" class="">getSelLanguage()</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#method_setDepartureLocation" class="">setDepartureLocation()</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#method_getArrivalId" class="">getArrivalId()</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#method_getDepartureId" class="">getDepartureId()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setDetails" class="">setDetails()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setRailRoadName" class="">setRailRoadName()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setBoardingDate" class="">setBoardingDate()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setBoardingTime" class="">setBoardingTime()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setCarNo" class="">setCarNo()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setRoute" class="">setRoute()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setSeatNo" class="">setSeatNo()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setSeatType" class="">setSeatType()</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#method_setPassengerName" class="">setPassengerName()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_locationMapEN" class="">$locationMapEN</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_locationMapFR" class="">$locationMapFR</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_locationMapFI" class="">$locationMapFI</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_languageMap" class="">$languageMap</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_selLanguage" class="">$selLanguage</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_arrivalLocationId" class="">$arrivalLocationId</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_arrivalLocationCity" class="">$arrivalLocationCity</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_departureLocationId" class="">$departureLocationId</a><br />
+                                                                    <a href="../classes/Cls.tripAbstract.html#property_departureLocationCity" class="">$departureLocationCity</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_passengerName" class="">$passengerName</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_route" class="">$route</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_BoardingDate" class="">$BoardingDate</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_BoardingTime" class="">$BoardingTime</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_carNo" class="">$carNo</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_seatType" class="">$seatType</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_seatNo" class="">$seatNo</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_railRoadName" class="">$railRoadName</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_boardingCardDetails" class="">$boardingCardDetails</a><br />
+                                                                    <a href="../classes/Cls.RailwayBoardingCard.html#property_details" class="">$details</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Cls.RailwayBoardingCard.html"><div class="path-wrapper">Cls\RailwayBoardingCard.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Cls.tripAbstract.html">\Cls\tripAbstract</a></div>
+                                                                                                    <div class="namespace-wrapper">\Cls\RailwayBoardingCard</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_locationMapEN" name="property_locationMapEN" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$locationMapEN</h3>
+                <pre class="signature">$locationMapEN : array</pre>
+                <p><em>Location to id mapping in Engish</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_locationMapFR" name="property_locationMapFR" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$locationMapFR</h3>
+                <pre class="signature">$locationMapFR : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_locationMapFI" name="property_locationMapFI" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$locationMapFI</h3>
+                <pre class="signature">$locationMapFI : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_languageMap" name="property_languageMap" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$languageMap</h3>
+                <pre class="signature">$languageMap : array</pre>
+                <p><em>List of all available languages</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_selLanguage" name="property_selLanguage" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$selLanguage</h3>
+                <pre class="signature">$selLanguage : mixed</pre>
+                <p><em>Selected language for the card</em></p>
+                
+
+                                <h4>Type</h4>
+                mixed
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_arrivalLocationId" name="property_arrivalLocationId" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$arrivalLocationId</h3>
+                <pre class="signature">$arrivalLocationId : integer</pre>
+                <p><em>Arrival location id holder</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_arrivalLocationCity" name="property_arrivalLocationCity" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$arrivalLocationCity</h3>
+                <pre class="signature">$arrivalLocationCity : String</pre>
+                <p><em>Arrival location city</em></p>
+                
+
+                                <h4>Type</h4>
+                String
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_departureLocationId" name="property_departureLocationId" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$departureLocationId</h3>
+                <pre class="signature">$departureLocationId : integer</pre>
+                <p><em>Departure location id holder</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_departureLocationCity" name="property_departureLocationCity" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$departureLocationCity</h3>
+                <pre class="signature">$departureLocationCity : String</pre>
+                <p><em>Departure location city</em></p>
+                
+
+                                <h4>Type</h4>
+                String
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_passengerName" name="property_passengerName" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$passengerName</h3>
+                <pre class="signature">$passengerName : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_route" name="property_route" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$route</h3>
+                <pre class="signature">$route : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_BoardingDate" name="property_BoardingDate" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$BoardingDate</h3>
+                <pre class="signature">$BoardingDate : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_BoardingTime" name="property_BoardingTime" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$BoardingTime</h3>
+                <pre class="signature">$BoardingTime : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_carNo" name="property_carNo" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$carNo</h3>
+                <pre class="signature">$carNo : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_seatType" name="property_seatType" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$seatType</h3>
+                <pre class="signature">$seatType : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_seatNo" name="property_seatNo" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$seatNo</h3>
+                <pre class="signature">$seatNo : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_railRoadName" name="property_railRoadName" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$railRoadName</h3>
+                <pre class="signature">$railRoadName : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_boardingCardDetails" name="property_boardingCardDetails" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$boardingCardDetails</h3>
+                <pre class="signature">$boardingCardDetails : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_details" name="property_details" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$details</h3>
+                <pre class="signature">$details : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getArrivalLocationCity" name="method_getArrivalLocationCity" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getArrivalLocationCity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getArrivalLocationCity() : String</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>get the City of departure</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDepartureLocationCity" name="method_getDepartureLocationCity" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDepartureLocationCity()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDepartureLocationCity() : String</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>get the City of arrival</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCardDetails" name="method_getCardDetails" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCardDetails()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCardDetails() </pre>
+                <p><em>Get the card details that is to be printed</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getShortCardDetails" name="method_getShortCardDetails" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getShortCardDetails()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getShortCardDetails() : string</pre>
+                <p><em>Methods need to be defined in the different card classes</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                            &mdash; <p>Returns the card details in few lines</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setArrivalLocation" name="method_setArrivalLocation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setArrivalLocation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setArrivalLocation(string  <span class="argument">$location</span>, string  <span class="argument">$lg</span>) : integer</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$location </td>
+                                <td><p>Name of the Arrival location (city)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$lg </td>
+                                <td><p>Code of the language the location is in</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>1 Invalid Language, 2 Invalid City , 0 Valid language and city</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSelLanguage" name="method_getSelLanguage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSelLanguage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSelLanguage() : mixed</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                            &mdash; <p>get the language for card</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDepartureLocation" name="method_setDepartureLocation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDepartureLocation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDepartureLocation(string  <span class="argument">$location</span>, string  <span class="argument">$lg</span>) : integer</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$location </td>
+                                <td><p>Name of the Departure location (city)</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$lg </td>
+                                <td><p>Code of the language the location is in</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>1 Invalid Language, 2 Invalid City , 0 Valid language and city</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getArrivalId" name="method_getArrivalId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getArrivalId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getArrivalId() : integer</pre>
+                <p><em>Getter to get the Arrival location Id</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDepartureId" name="method_getDepartureId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDepartureId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDepartureId() : integer</pre>
+                <p><em>Getter to get the Departure location Id</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Cls.tripAbstract.html"><div class="path-wrapper">\Cls\tripAbstract</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDetails" name="method_setDetails" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDetails()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDetails(mixed  <span class="argument">$details</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$details </td>
+                                <td><p>Set the details about the railway route</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRailRoadName" name="method_setRailRoadName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRailRoadName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRailRoadName(mixed  <span class="argument">$railRoadName</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$railRoadName </td>
+                                <td><p>Sets the name of the rail road company</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setBoardingDate" name="method_setBoardingDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setBoardingDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setBoardingDate(mixed  <span class="argument">$BoardingDate</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$BoardingDate </td>
+                                <td><p>Sets the boarding date on the  train</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setBoardingTime" name="method_setBoardingTime" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setBoardingTime()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setBoardingTime(mixed  <span class="argument">$BoardingTime</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$BoardingTime </td>
+                                <td><p>Sets the boading time on the train</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCarNo" name="method_setCarNo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCarNo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCarNo(mixed  <span class="argument">$carNo</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$carNo </td>
+                                <td><p>Sets the Car number  for the seat on the train</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRoute" name="method_setRoute" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRoute()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRoute(mixed  <span class="argument">$route</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$route </td>
+                                <td><p>Sets the route the train will be taking</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSeatNo" name="method_setSeatNo" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSeatNo()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSeatNo(mixed  <span class="argument">$seatNo</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$seatNo </td>
+                                <td><p>Sets the seat no on the train</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSeatType" name="method_setSeatType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSeatType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSeatType(mixed  <span class="argument">$seatType</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$seatType </td>
+                                <td><p>Sets the type ie open seat or reserved seat</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setPassengerName" name="method_setPassengerName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setPassengerName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setPassengerName(mixed  <span class="argument">$passengerName</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$passengerName </td>
+                                <td><p>Sets the name of the passenger</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">RailwayBoardingCard.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Cls\RailwayBoardingCard.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Cls.html">\Cls</a></li>
+                                                                            <li><a href="../namespaces/Test.html">\Test</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on December 5th, 2015 at 17:45.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
